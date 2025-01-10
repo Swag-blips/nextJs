@@ -15,7 +15,18 @@ const CreatePost = () => {
   const [isPosting, setIsPosting] = useState(false);
   const [showImageUpload, setShowImageUpload] = useState(false);
 
-  const handleSubmit = async () => {};
+  const handleSubmit = async () => {
+    if (!content.trim() && !imageUrl) return;
+
+    setIsPosting(true);
+
+    try {
+      await createPost(content, imageUrl);
+    } catch (error) {
+    } finally {
+      setIsPosting(false);
+    }
+  };
   return (
     <Card className="mb-6">
       <CardContent className="pt-6">
@@ -63,7 +74,7 @@ const CreatePost = () => {
             <Button
               className="flex items-center"
               onClick={handleSubmit}
-              //   disabled={(!content.trim() && !imageUrl) || isPosting}
+              disabled={(!content.trim() && !imageUrl) || isPosting}
             >
               {isPosting ? (
                 <>
