@@ -10,3 +10,6 @@ export default defineSchema({
     clerkId: v.string(),
   }).index("by_clerk_id", ["clerkId"]),
 });
+
+
+// https://magnetic-goblin-11.clerk.accounts.dev
